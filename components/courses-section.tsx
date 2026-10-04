@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { COURSES } from "@/lib/data/courses"
-import { GraduationCap, Check, ArrowRight, Clock, Award, Users, BookOpen, Terminal, Shield, Sparkles } from "lucide-react"
+import { GraduationCap, Check, ArrowRight, Clock, Award, Users, BookOpen, Shield, Sparkles } from "lucide-react"
 import { ScrollReveal } from "@/components/scroll-reveal"
 
 export default function CoursesSection() {
@@ -69,7 +69,7 @@ export default function CoursesSection() {
                 direction="up"
                 className={`p-8 sm:p-10 rounded-3xl flex flex-col justify-between transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 ${
                   isFeatured
-                    ? "bg-[#37322F] text-white border border-[#37322F] shadow-lg"
+                    ? "bg-[#1C1A18] text-white border border-[#39F763]/30 shadow-[0_16px_40px_-10px_rgba(57,247,99,0.12)] hover:border-[#39F763]/60"
                     : "bg-white text-[#37322F] border border-[rgba(55,50,47,0.1)]"
                 }`}
               >
@@ -79,7 +79,7 @@ export default function CoursesSection() {
                     <span
                       className={`text-xs uppercase font-semibold px-3 py-1 rounded-full font-sans tracking-wide ${
                         isFeatured
-                          ? "bg-white/15 text-white border border-white/20"
+                          ? "bg-[#39F763]/15 text-[#39F763] border border-[#39F763]/30"
                           : "bg-[rgba(55,50,47,0.06)] text-[#37322F]"
                       }`}
                     >
@@ -112,20 +112,20 @@ export default function CoursesSection() {
 
                   {/* EMC-Style Tech Stack Strip */}
                   <div className="flex flex-col gap-2 pt-1">
-                    <span className={`text-[11px] font-semibold uppercase tracking-wider font-sans ${isFeatured ? "text-white/70" : "text-[#828387]"}`}>
+                    <span className={`text-[11px] font-semibold uppercase tracking-wider font-sans ${isFeatured ? "text-[#39F763]/90" : "text-[#828387]"}`}>
                       Tools & Stack Mastered:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {techStack.map((tech, i) => (
                         <span
                           key={i}
-                          className={`text-xs px-2.5 py-1 rounded-full font-sans font-medium flex items-center gap-1 ${
+                          className={`text-xs px-2.5 py-1 rounded-full font-sans font-medium flex items-center gap-1.5 ${
                             isFeatured
                               ? "bg-white/10 text-white border border-white/15"
                               : "bg-[rgba(55,50,47,0.05)] text-[#37322F] border border-[rgba(55,50,47,0.08)]"
                           }`}
                         >
-                          <Terminal className="w-3 h-3 opacity-70" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-current opacity-50" />
                           {tech}
                         </span>
                       ))}
@@ -166,7 +166,7 @@ export default function CoursesSection() {
                   <div className="flex flex-col gap-2.5 pt-2">
                     <span
                       className={`text-xs font-semibold uppercase tracking-wider font-sans ${
-                        isFeatured ? "text-white/70" : "text-[#828387]"
+                        isFeatured ? "text-[#39F763]/90" : "text-[#828387]"
                       }`}
                     >
                       Curriculum Syllabus ({course.modules.length} Modules):
@@ -174,7 +174,7 @@ export default function CoursesSection() {
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-sans">
                       {course.modules.map((mod, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <Check className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${isFeatured ? "text-white" : "text-[#37322F]"}`} />
+                          <Check className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${isFeatured ? "text-[#39F763]" : "text-[#37322F]"}`} />
                           <span className={isFeatured ? "text-white/90" : "text-[#49423D]"}>{mod}</span>
                         </li>
                       ))}
@@ -185,7 +185,7 @@ export default function CoursesSection() {
                   <div className="flex flex-col gap-2 pt-2 border-t border-current/10">
                     <span
                       className={`text-xs font-semibold uppercase tracking-wider font-sans ${
-                        isFeatured ? "text-white/70" : "text-[#828387]"
+                        isFeatured ? "text-[#39F763]/90" : "text-[#828387]"
                       }`}
                     >
                       What's Included:
@@ -193,7 +193,7 @@ export default function CoursesSection() {
                     <ul className="flex flex-col gap-1.5 text-xs font-sans">
                       {course.inclusions.map((inc, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${isFeatured ? "bg-white" : "bg-[#37322F]"}`} />
+                          <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${isFeatured ? "bg-[#39F763] shadow-[0_0_4px_#39F763]" : "bg-[#37322F]"}`} />
                           <span className={isFeatured ? "text-white/80" : "text-[#605A57]"}>{inc}</span>
                         </li>
                       ))}
@@ -207,10 +207,10 @@ export default function CoursesSection() {
                     href={`https://wa.me/917845088387?text=Hi%20SECUREWORLDZ%2C%20I%20want%20to%20enroll%20in%20the%20${encodeURIComponent(course.title)}%20(${course.price}).`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full py-3.5 rounded-full flex justify-center items-center gap-2 text-xs sm:text-sm font-medium font-sans transition-all shadow-xs ${
+                    className={`w-full py-3.5 rounded-full flex justify-center items-center gap-2 text-xs sm:text-sm font-sans transition-all shadow-xs ${
                       isFeatured
-                        ? "bg-white text-[#37322F] hover:bg-white/90"
-                        : "bg-[#37322F] text-white hover:bg-[#201D1B]"
+                        ? "bg-[#39F763] hover:bg-[#2ee656] text-black font-semibold shadow-[0_4px_16px_rgba(57,247,99,0.3)]"
+                        : "bg-[#37322F] text-white hover:bg-[#201D1B] font-medium"
                     }`}
                   >
                     <span>Enroll Now ({course.price})</span>

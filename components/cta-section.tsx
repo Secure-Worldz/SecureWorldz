@@ -43,18 +43,18 @@ export default function CTASection() {
 
           <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
             <Link
-              href="/#courses"
-              className="px-6 py-3 bg-[#37322F] hover:bg-[#201D1B] text-white text-xs sm:text-sm font-medium rounded-full shadow-xs transition-colors flex items-center gap-2 font-sans"
+              href="/courses"
+              className="px-7 py-3 bg-[#181716] hover:bg-black text-white text-xs sm:text-sm font-medium rounded-full shadow-xs hover:border-[#39F763]/40 hover:shadow-[0_4px_16px_rgba(57,247,99,0.2)] border border-transparent transition-all flex items-center gap-2 font-sans"
             >
               <span>Explore Courses</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-[#39F763]" />
             </Link>
 
             <a
               href="https://wa.me/917845088387?text=Hi%20SECUREWORLDZ%2C%20I%20would%20like%20to%20learn%20more."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-white hover:bg-white/80 text-[#37322F] text-xs sm:text-sm font-medium rounded-full border border-[rgba(55,50,47,0.15)] shadow-xs transition-colors font-sans"
+              className="px-7 py-3 bg-white hover:bg-white/90 text-[#181716] text-xs sm:text-sm font-medium rounded-full border border-[rgba(55,50,47,0.15)] hover:border-[#39F763]/50 shadow-xs transition-all font-sans"
             >
               Talk to Us
             </a>

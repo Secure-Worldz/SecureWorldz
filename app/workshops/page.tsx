@@ -7,7 +7,7 @@ import CTASection from "@/components/cta-section"
 import ScrollProgress from "@/components/scroll-progress"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { WORKSHOPS } from "@/lib/data/workshops"
-import { Calendar, Clock, MapPin, Users, CheckCircle2, Send, Terminal, ArrowRight } from "lucide-react"
+import { Calendar, Clock, MapPin, Users, CheckCircle2, Send, Sparkles, ArrowRight } from "lucide-react"
 
 export default function WorkshopsPage() {
   const [formData, setFormData] = useState({
@@ -41,7 +41,7 @@ export default function WorkshopsPage() {
             <div className="pt-10 sm:pt-14 pb-8 sm:pb-12 flex flex-col justify-start items-center px-4 w-full border-b border-[rgba(55,50,47,0.12)]">
               <ScrollReveal className="w-full max-w-[700px] flex flex-col justify-center items-center gap-4 text-center">
                 <div className="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] rounded-[90px] flex items-center gap-2 border border-[rgba(2,6,23,0.08)]">
-                  <Terminal className="w-3.5 h-3.5 text-[#37322F]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#37322F]" />
                   <span className="text-[#37322F] text-xs font-medium font-sans">
                     Live Practical Sessions
                   </span>

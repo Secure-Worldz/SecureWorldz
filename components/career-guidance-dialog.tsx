@@ -29,10 +29,10 @@ export default function CareerGuidanceDialog() {
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={() => setIsOpen(true)}
-          className="px-4 py-2.5 bg-[#37322F] hover:bg-[#201D1B] text-white rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.18)] border border-[rgba(255,255,255,0.15)] flex items-center gap-2 text-xs font-medium font-sans transition-all hover:scale-105 active:scale-95"
+          className="px-4 py-2.5 bg-[#181716] hover:bg-black text-white rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.22)] border border-[rgba(255,255,255,0.15)] hover:border-[#39F763]/50 hover:shadow-[0_4px_20px_rgba(57,247,99,0.25)] flex items-center gap-2 text-xs font-medium font-sans transition-all hover:scale-105 active:scale-95"
           aria-label="Get Free Career Guidance"
         >
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="w-2 h-2 rounded-full bg-[#39F763] shadow-[0_0_8px_#39F763] animate-pulse" />
           <MessageSquare className="w-3.5 h-3.5" />
           <span>Get Free Guidance</span>
         </button>
@@ -144,7 +144,7 @@ export default function CareerGuidanceDialog() {
 
                 <button
                   type="submit"
-                  className="w-full mt-2 py-3 bg-[#37322F] hover:bg-[#201D1B] text-white text-xs font-medium rounded-full shadow-xs flex justify-center items-center gap-2 transition-colors font-sans"
+                  className="w-full mt-2 py-3 bg-[#181716] hover:bg-[#39F763] hover:text-black text-white text-xs font-semibold rounded-full shadow-xs flex justify-center items-center gap-2 transition-all font-sans"
                 >
                   <span>Get Free Guidance</span>
                   <Send className="w-3.5 h-3.5" />

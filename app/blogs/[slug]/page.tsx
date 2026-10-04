@@ -219,7 +219,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
 
                 <Link
-                  href="/#courses"
+                  href="/courses"
                   className="px-6 py-3 bg-[#37322F] hover:bg-[#201D1B] text-white text-xs sm:text-sm font-medium rounded-full shadow-xs flex items-center gap-2 shrink-0 font-sans transition-colors"
                 >
                   <span>Explore Courses</span>

@@ -31,7 +31,7 @@ export default function FeaturedMasterclasses() {
     {
       title: "Linux & Network Defense for Cybersecurity",
       badge: "CyberJai YouTube Series",
-      description: "From essential Linux terminal commands to packet inspection with Wireshark and automated bash triage scripts.",
+      description: "From essential Linux system tools to packet inspection with Wireshark and automated triage scripts.",
       duration: "4+ Hours Tutorial",
       likes: "9.5k+ Views",
       topics: "Linux & Networking",
@@ -98,7 +98,13 @@ export default function FeaturedMasterclasses() {
 
                 {/* Badge & Title */}
                 <div>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[rgba(55,50,47,0.06)] text-[#37322F] font-sans inline-block mb-2">
+                  <span
+                    className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full font-sans inline-block mb-2 ${
+                      cls.isInternal
+                        ? "bg-[#39F763]/20 text-emerald-900 border border-[#39F763]/40"
+                        : "bg-[rgba(55,50,47,0.06)] text-[#37322F]"
+                    }`}
+                  >
                     {cls.badge}
                   </span>
                   <h3 className="text-lg sm:text-xl font-serif text-[#37322F] leading-snug font-medium">
@@ -130,7 +136,7 @@ export default function FeaturedMasterclasses() {
               {cls.isInternal ? (
                 <Link
                   href={cls.link}
-                  className="w-full py-3 rounded-full bg-[#37322F] hover:bg-[#201D1B] text-white text-xs font-medium font-sans flex items-center justify-center gap-2 transition-colors shadow-xs"
+                  className="w-full py-3 rounded-full bg-[#181716] hover:bg-[#39F763] hover:text-black text-white text-xs font-semibold font-sans flex items-center justify-center gap-2 transition-all shadow-xs"
                 >
                   <span>Explore Masterclass</span>
                   <ArrowRight className="w-3.5 h-3.5" />

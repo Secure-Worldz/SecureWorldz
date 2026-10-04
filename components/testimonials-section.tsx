@@ -38,7 +38,7 @@ const COLUMN_1: Testimonial[] = [
     name: "Praveen M",
     source: "Rated by @Google",
     content:
-      "Detailed explanation helps to understand the concept clearly. The real terminal labs and packet inspection sessions were exceptional ❤️",
+      "Detailed explanation helps to understand the concept clearly. The real hands-on labs and packet inspection sessions were exceptional ❤️",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80",
   },
 ]
@@ -48,7 +48,7 @@ const COLUMN_2: Testimonial[] = [
     name: "Velu Mani",
     source: "Rated by @Google",
     content:
-      "Hi Team, Your Cybersecurity Starter course is very helpful to learn ethical hacking as a beginner. I was struggling with Linux terminal commands and networking protocols. SECUREWORLDZ practical series made everything clear and simple to understand. Now I can practice Burp Suite and BugAtlas with confidence. Thanks to the SECUREWORLDZ team!",
+      "Hi Team, Your Cybersecurity Starter course is very helpful to learn ethical hacking as a beginner. I was struggling with Linux command line tools and networking protocols. SECUREWORLDZ practical series made everything clear and simple to understand. Now I can practice Burp Suite and BugAtlas with confidence. Thanks to the SECUREWORLDZ team!",
     avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&auto=format&fit=crop&q=80",
   },
   {

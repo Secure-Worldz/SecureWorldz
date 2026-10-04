@@ -1,7 +1,7 @@
 "use client"
 
 import { PRODUCTS } from "@/lib/data/products"
-import { Terminal, Cpu, Database, Binary, ShieldAlert, Bug, Crosshair, Sparkles, CheckCircle2 } from "lucide-react"
+import { Layers, Code2, Cpu, Database, Binary, ShieldAlert, Bug, Crosshair, Sparkles, CheckCircle2 } from "lucide-react"
 import { ScrollReveal } from "@/components/scroll-reveal"
 
 function getProductIcon(id: string) {
@@ -15,13 +15,13 @@ function getProductIcon(id: string) {
     case "machinex":
       return <Cpu className="w-5 h-5 text-[#37322F]" />
     case "kernelis":
-      return <Terminal className="w-5 h-5 text-[#37322F]" />
+      return <Layers className="w-5 h-5 text-[#37322F]" />
     case "infectis":
       return <ShieldAlert className="w-5 h-5 text-[#37322F]" />
     case "darkx":
       return <Database className="w-5 h-5 text-[#37322F]" />
     default:
-      return <Terminal className="w-5 h-5 text-[#37322F]" />
+      return <Code2 className="w-5 h-5 text-[#37322F]" />
   }
 }
 
@@ -36,7 +36,7 @@ export default function ProductsSection() {
         <ScrollReveal className="w-full max-w-[680px] flex flex-col justify-start items-center gap-4 text-center">
           {/* Badge */}
           <div className="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] rounded-[90px] flex items-center gap-2 border border-[rgba(2,6,23,0.08)]">
-            <Terminal className="w-3.5 h-3.5 text-[#37322F]" />
+            <Layers className="w-3.5 h-3.5 text-[#37322F]" />
             <span className="text-[#37322F] text-xs font-medium font-sans">Software & Labs</span>
           </div>
 

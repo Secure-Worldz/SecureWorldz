@@ -82,7 +82,7 @@ export const PRODUCTS: SecurityProduct[] = [
     badge: "Agentic AI Security",
     features: [
       "Web-Based Security Lab",
-      "Linux Terminal",
+      "Linux Cloud Environment",
       "AI-Integrated IDE",
       "OWASP 2026 Lab (10 simulations)",
       "Vulnerable App Playgrounds",

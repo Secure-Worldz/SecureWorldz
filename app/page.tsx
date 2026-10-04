@@ -8,7 +8,6 @@ import ScrollProgress from "../components/scroll-progress"
 import { ScrollReveal } from "../components/scroll-reveal"
 import ServicesSection from "../components/services-section"
 import ProductsSection from "../components/products-section"
-import CoursesSection from "../components/courses-section"
 import AchievementsSection from "../components/achievements-section"
 import WhyUsSection from "../components/why-us-section"
 import CommunitySection from "../components/community-section"
@@ -18,7 +17,7 @@ import AwardsRecognition from "../components/awards-recognition"
 import FeaturedMasterclasses from "../components/featured-masterclasses"
 import CareerGuidanceDialog from "../components/career-guidance-dialog"
 import TestimonialsSection from "../components/testimonials-section"
-import { ArrowRight, ArrowUpRight, Users, ShieldCheck, Terminal, Award, Sparkles, Shield } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Users, ShieldCheck, Bug, Award, Sparkles, Shield, GraduationCap } from "lucide-react"
 
 // Reusable Badge Component adhering to Brillance styling
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -32,7 +31,7 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   )
 }
 
-const typewriterPhrases = [
+const focusTracks = [
   "Offensive Security Labs",
   "VAPT & Defense Protocols",
   "Zero-Day Vulnerability Research",
@@ -41,36 +40,15 @@ const typewriterPhrases = [
 ]
 
 export default function LandingPage() {
-  // Typewriter effect state
-  const [phraseIndex, setPhraseIndex] = useState(0)
-  const [displayedText, setDisplayedText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
+  const [trackIndex, setTrackIndex] = useState(0)
 
-  // Typewriter effect logic
+  // Smooth rotating focus track
   useEffect(() => {
-    let timer: NodeJS.Timeout
-    const currentPhrase = typewriterPhrases[phraseIndex]
-
-    if (!isDeleting && displayedText === currentPhrase) {
-      timer = setTimeout(() => {
-        setIsDeleting(true)
-      }, 1800)
-    } else if (isDeleting && displayedText === "") {
-      setIsDeleting(false)
-      setPhraseIndex((prev) => (prev + 1) % typewriterPhrases.length)
-    } else {
-      const speed = isDeleting ? 30 : 65
-      timer = setTimeout(() => {
-        setDisplayedText((prev) =>
-          isDeleting
-            ? currentPhrase.substring(0, prev.length - 1)
-            : currentPhrase.substring(0, prev.length + 1)
-        )
-      }, speed)
-    }
-
-    return () => clearTimeout(timer)
-  }, [displayedText, isDeleting, phraseIndex])
+    const timer = setInterval(() => {
+      setTrackIndex((prev) => (prev + 1) % focusTracks.length)
+    }, 2800)
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <div className="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
@@ -91,13 +69,12 @@ export default function LandingPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
                   {/* Left Column (Headline, Typewriter, Subtitle, Buttons, 3-Stat Columns) */}
                   <div className="lg:col-span-7 flex flex-col justify-start items-start text-left">
-                    {/* Dynamic Typewriter Pill */}
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#37322F]/10 shadow-xs text-xs font-mono text-[#37322F] mb-6">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      <span className="text-[#37322F]/60">Hands-on:</span>
-                      <span className="font-semibold text-[#37322F]">
-                        {displayedText}
-                        <span className="animate-pulse font-bold text-[#37322F] ml-0.5">|</span>
+                    {/* Modern Program Focus Pill (Clean Sans-Serif) */}
+                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/95 border border-[#37322F]/10 shadow-xs text-xs font-sans text-[#37322F] mb-6">
+                      <span className="w-2 h-2 rounded-full bg-[#39F763] shadow-[0_0_8px_#39F763] animate-pulse" />
+                      <span className="text-[#37322F]/60 font-medium">Core Focus:</span>
+                      <span className="font-semibold text-[#1C1A18] tracking-tight">
+                        {focusTracks[trackIndex]}
                       </span>
                     </div>
 
@@ -115,8 +92,8 @@ export default function LandingPage() {
                     {/* Buttons Side by Side */}
                     <div className="flex flex-wrap items-center gap-3.5 mb-10 sm:mb-12">
                       <Link
-                        href="/#courses"
-                        className="h-12 px-8 bg-[#181716] hover:bg-black text-white text-xs sm:text-sm font-medium rounded-full shadow-[0_8px_20px_rgba(0,0,0,0.18)] flex items-center justify-center gap-2 font-sans transition-all hover:scale-[1.02]"
+                        href="/courses"
+                        className="h-12 px-8 bg-[#181716] hover:bg-black text-white text-xs sm:text-sm font-medium rounded-full shadow-[0_8px_20px_rgba(0,0,0,0.18)] flex items-center justify-center gap-2 font-sans transition-all hover:scale-[1.02] border border-transparent hover:border-[#39F763]/40 hover:shadow-[0_8px_24px_rgba(57,247,99,0.2)]"
                       >
                         <span>Explore Courses</span>
                         <ArrowRight className="w-4 h-4" />
@@ -158,18 +135,17 @@ export default function LandingPage() {
                     </div>
                   </div>
 
-                  {/* Right Column (Without human photo: Interactive Cyber Console + Floating Glass Card) */}
-                  {/* Right Column: Apple-Grade Floating Glassmorphic Cohort Card (Terminal Box Removed) */}
+                  {/* Right Column: Apple-Grade Floating Glassmorphic Cohort Card */}
                   <div className="lg:col-span-5 flex flex-col justify-center items-center w-full h-full">
-                    <div className="w-full rounded-[28px] sm:rounded-[36px] p-7 sm:p-9 md:p-10 bg-[#141416]/90 backdrop-blur-2xl border border-white/[0.08] shadow-[0_24px_50px_-12px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.14)] text-white flex flex-col justify-between gap-6 transition-all duration-300 hover:border-white/[0.14] group">
+                    <div className="w-full rounded-[28px] sm:rounded-[36px] p-7 sm:p-9 md:p-10 bg-[#141416]/90 backdrop-blur-2xl border border-white/[0.08] shadow-[0_24px_50px_-12px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.14)] text-white flex flex-col justify-between gap-6 transition-all duration-300 hover:border-[#39F763]/30 group">
                       {/* Top Header with Status Badges */}
                       <div className="flex items-center justify-between gap-3">
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-mono font-medium tracking-wide">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-sans font-medium tracking-wide">
                           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                           <span>UPCOMING COHORT</span>
                         </div>
-                        <div className="inline-flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <div className="inline-flex items-center gap-1.5 text-xs text-[#39F763] font-sans font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#39F763] shadow-[0_0_6px_#39F763] animate-pulse" />
                           <span>Enrolling Now</span>
                         </div>
                       </div>
@@ -186,16 +162,16 @@ export default function LandingPage() {
 
                       {/* Feature Tags (Apple-style translucent chips) */}
                       <div className="flex flex-wrap gap-2 pt-1">
-                        <span className="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[11px] font-mono text-neutral-200">
+                        <span className="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[11px] font-sans font-medium text-neutral-200">
                           OWASP 2026 Ready
                         </span>
-                        <span className="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[11px] font-mono text-neutral-200">
+                        <span className="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[11px] font-sans font-medium text-neutral-200">
                           English & Tamil
                         </span>
-                        <span className="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[11px] font-mono text-neutral-200">
+                        <span className="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[11px] font-sans font-medium text-neutral-200">
                           10 Hands-on Labs
                         </span>
-                        <span className="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[11px] font-mono text-neutral-200">
+                        <span className="px-3 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-[11px] font-sans font-medium text-neutral-200">
                           ₹499 Starter · ₹2,999 Advanced
                         </span>
                       </div>
@@ -211,8 +187,8 @@ export default function LandingPage() {
                           </span>
                         </div>
                         <Link
-                          href="/#courses"
-                          className="w-12 h-12 rounded-2xl bg-white text-[#181716] flex items-center justify-center shrink-0 hover:bg-neutral-100 hover:scale-105 active:scale-95 transition-all shadow-md group/btn"
+                          href="/courses"
+                          className="w-12 h-12 rounded-2xl bg-white text-[#181716] flex items-center justify-center shrink-0 hover:bg-[#39F763] hover:text-black hover:scale-105 active:scale-95 transition-all shadow-md group/btn"
                           aria-label="View Courses"
                         >
                           <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
@@ -227,10 +203,6 @@ export default function LandingPage() {
               <ScrollReveal direction="up" distance={16} delay={150} className="w-full max-w-[1240px] mx-auto mt-10 sm:mt-12 px-4">
                 <div className="flex flex-wrap items-center justify-center sm:justify-between gap-6 sm:gap-8 opacity-75">
                   <div className="flex items-center gap-2 font-sans font-semibold text-sm sm:text-base text-[#37322F]">
-                    <Shield className="w-4 h-4 text-[#37322F]" />
-                    <span>Prathyusha</span>
-                  </div>
-                  <div className="flex items-center gap-2 font-sans font-semibold text-sm sm:text-base text-[#37322F]">
                     <ShieldCheck className="w-4 h-4 text-[#37322F]" />
                     <span>OWASP 2026</span>
                   </div>
@@ -243,7 +215,7 @@ export default function LandingPage() {
                     <span>CyberJai</span>
                   </div>
                   <div className="flex items-center gap-2 font-sans font-semibold text-sm sm:text-base text-[#37322F]">
-                    <Terminal className="w-4 h-4 text-[#37322F]" />
+                    <Bug className="w-4 h-4 text-[#37322F]" />
                     <span>BugAtlas</span>
                   </div>
                   <div className="flex items-center gap-2 font-sans font-semibold text-sm sm:text-base text-[#37322F]">
@@ -254,8 +226,30 @@ export default function LandingPage() {
               </ScrollReveal>
             </div>
 
-            {/* 4.4 Courses Section (Starter ₹499 & Advanced ₹2,999 - EMC Premier Programs style) */}
-            <CoursesSection />
+            {/* Course Tracks Teaser Strip Linking to /courses */}
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10 border-b border-[rgba(55,50,47,0.08)]">
+              <ScrollReveal direction="up" distance={18} className="p-6 sm:p-8 rounded-3xl bg-white border border-[rgba(55,50,47,0.08)] shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex flex-col gap-2 text-center md:text-left">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(55,50,47,0.05)] text-xs font-sans font-medium text-[#37322F] w-fit mx-auto md:mx-0">
+                    <GraduationCap className="w-3.5 h-3.5 text-[#37322F]" />
+                    <span>Professional Training Tracks</span>
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-serif text-[#1C1A18] font-normal">
+                    Starter Program (₹499) · Advanced Career Track (₹2,999)
+                  </h2>
+                  <p className="text-xs sm:text-sm text-[#605A57] font-sans max-w-[560px]">
+                    Bilingual hands-on cybersecurity courses with practical labs, live mentorship, and verified certification.
+                  </p>
+                </div>
+                <Link
+                  href="/courses"
+                  className="px-7 py-3.5 bg-[#181716] hover:bg-[#39F763] hover:text-black text-white text-xs sm:text-sm font-semibold rounded-full shadow-xs transition-all flex items-center gap-2 shrink-0 font-sans group/btn"
+                >
+                  <span>View All Courses & Syllabi</span>
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                </Link>
+              </ScrollReveal>
+            </div>
 
             {/* Student Review / Testimonials Section (EMC & User Image Reference) */}
             <TestimonialsSection />
