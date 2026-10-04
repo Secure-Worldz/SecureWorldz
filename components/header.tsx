@@ -18,11 +18,8 @@ export function Header() {
 
   return (
     <header className="w-full h-14 sm:h-16 md:h-20 lg:h-[84px] relative flex justify-center items-center z-40 px-4 sm:px-6 md:px-8">
-      {/* Background horizontal guideline */}
-      <div className="w-full h-0 absolute left-0 top-1/2 border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white] pointer-events-none" />
-
       {/* Floating Pill Container */}
-      <div className="w-full max-w-[860px] h-11 sm:h-12 py-1 sm:py-1.5 px-3 sm:px-4 bg-[#F7F5F3]/95 backdrop-blur-md shadow-[0px_0px_0px_2px_white,0px_4px_12px_rgba(0,0,0,0.04)] rounded-[50px] flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.08)]">
+      <div className="w-full max-w-5xl h-11 sm:h-12 py-1 sm:py-1.5 px-3 sm:px-4 bg-[#F7F5F3]/95 backdrop-blur-md shadow-[0px_0px_0px_2px_white,0px_4px_12px_rgba(0,0,0,0.04)] rounded-[50px] flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.08)]">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2 pl-2">
           <span className="text-[#2F3037] text-sm sm:text-base font-semibold tracking-tight font-sans">

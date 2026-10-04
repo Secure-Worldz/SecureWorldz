@@ -32,14 +32,8 @@ export default function WorkshopsPage() {
       <ScrollProgress />
 
       <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with Brillance layout borders */}
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical guideline */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
-
-          {/* Right vertical guideline */}
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
-
+        {/* Full-width container */}
+        <div className="w-full relative flex flex-col justify-start items-center min-h-screen">
           <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10 w-full">
             <Header />
 
@@ -65,7 +59,7 @@ export default function WorkshopsPage() {
             {/* Upcoming Workshop Spotlight (October 30) */}
             {upcomingWorkshop && (
               <div className="w-full border-b border-[rgba(55,50,47,0.12)] bg-white/70 py-12 px-4 sm:px-8">
-                <div className="max-w-[900px] mx-auto flex flex-col lg:flex-row gap-10 items-start">
+                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col lg:flex-row gap-10 items-start">
                   {/* Left Column: Workshop Details */}
                   <ScrollReveal direction="left" distance={24} delay={100} className="flex-1 flex flex-col gap-6">
                     <div className="flex items-center gap-2">
@@ -211,7 +205,7 @@ export default function WorkshopsPage() {
 
             {/* Past Events / Community Meetups */}
             <div className="w-full py-12 px-4 sm:px-8 border-b border-[rgba(55,50,47,0.12)]">
-              <div className="max-w-[900px] mx-auto flex flex-col gap-6">
+              <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6">
                 <ScrollReveal>
                   <h3 className="text-xl sm:text-2xl font-serif text-[#37322F]">
                     Community Gatherings & Past Events

@@ -29,14 +29,8 @@ export default function BlogsPage() {
       <ScrollProgress />
 
       <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with Brillance layout borders */}
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical guideline */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
-
-          {/* Right vertical guideline */}
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
-
+        {/* Full-width container */}
+        <div className="w-full relative flex flex-col justify-start items-center min-h-screen">
           <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10 w-full">
             <Header />
 
@@ -90,20 +84,8 @@ export default function BlogsPage() {
             </div>
 
             {/* Articles Grid (9 Articles) */}
-            <div className="w-full flex justify-center items-start">
-              {/* Left decorative hatch */}
-              <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-                <div className="w-[120px] left-[-40px] top-[-120px] absolute flex flex-col">
-                  {Array.from({ length: 180 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="self-stretch h-3 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
                 {filteredPosts.map((post, index) => (
                   <ScrollReveal
                     key={post.id}
@@ -111,8 +93,8 @@ export default function BlogsPage() {
                     direction="up"
                     distance={20}
                     className={`p-6 sm:p-8 flex flex-col justify-between items-start gap-6 border-b border-[rgba(55,50,47,0.12)] bg-[#F7F5F3] hover:bg-white transition-all duration-300 ${
-                      index % 3 !== 2 ? "lg:border-r" : ""
-                    } ${index % 2 === 0 ? "md:border-r lg:border-r-0" : ""}`}
+                      index % 3 !== 2 ? "lg:border-r border-[rgba(55,50,47,0.12)]" : ""
+                    } ${index % 2 === 0 ? "md:border-r lg:border-r-0 border-[rgba(55,50,47,0.12)]" : ""}`}
                   >
                     <div className="flex flex-col gap-4 w-full">
                       {/* Meta badge & Read Time */}
@@ -174,18 +156,6 @@ export default function BlogsPage() {
                     No articles found matching your criteria.
                   </div>
                 )}
-              </div>
-
-              {/* Right decorative hatch */}
-              <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-                <div className="w-[120px] left-[-40px] top-[-120px] absolute flex flex-col">
-                  {Array.from({ length: 180 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="self-stretch h-3 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 

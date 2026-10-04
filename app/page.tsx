@@ -14,7 +14,11 @@ import WhyUsSection from "../components/why-us-section"
 import CommunitySection from "../components/community-section"
 import CTASection from "../components/cta-section"
 import FooterSection from "../components/footer-section"
-import { ArrowRight, Users } from "lucide-react"
+import AwardsRecognition from "../components/awards-recognition"
+import FeaturedMasterclasses from "../components/featured-masterclasses"
+import CareerGuidanceDialog from "../components/career-guidance-dialog"
+import TestimonialsSection from "../components/testimonials-section"
+import { ArrowRight, Users, ShieldCheck, Terminal, Award, Sparkles } from "lucide-react"
 
 // Reusable Badge Component adhering to Brillance styling
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
@@ -28,11 +32,51 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   )
 }
 
+const typewriterPhrases = [
+  "Offensive Security Labs",
+  "VAPT & Defense Protocols",
+  "Zero-Day Vulnerability Research",
+  "Agentic AI Security Audits",
+  "Reverse Engineering & Exploits",
+]
+
 export default function LandingPage() {
   const [activeCard, setActiveCard] = useState(0)
   const [progress, setProgress] = useState(0)
   const mountedRef = useRef(true)
 
+  // Typewriter effect state
+  const [phraseIndex, setPhraseIndex] = useState(0)
+  const [displayedText, setDisplayedText] = useState("")
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  // Typewriter effect logic
+  useEffect(() => {
+    let timer: NodeJS.Timeout
+    const currentPhrase = typewriterPhrases[phraseIndex]
+
+    if (!isDeleting && displayedText === currentPhrase) {
+      timer = setTimeout(() => {
+        setIsDeleting(true)
+      }, 1800)
+    } else if (isDeleting && displayedText === "") {
+      setIsDeleting(false)
+      setPhraseIndex((prev) => (prev + 1) % typewriterPhrases.length)
+    } else {
+      const speed = isDeleting ? 30 : 65
+      timer = setTimeout(() => {
+        setDisplayedText((prev) =>
+          isDeleting
+            ? currentPhrase.substring(0, prev.length - 1)
+            : currentPhrase.substring(0, prev.length + 1)
+        )
+      }, speed)
+    }
+
+    return () => clearTimeout(timer)
+  }, [displayedText, isDeleting, phraseIndex])
+
+  // Feature tab auto-cycle
   useEffect(() => {
     const progressInterval = setInterval(() => {
       if (!mountedRef.current) return
@@ -72,14 +116,8 @@ export default function LandingPage() {
       <ScrollProgress />
 
       <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with Brillance margins and vertical guide lines */}
-        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical guideline */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
-
-          {/* Right vertical guideline */}
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
-
+        {/* Full-width container */}
+        <div className="w-full relative flex flex-col justify-start items-center min-h-screen">
           <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10 w-full">
             {/* Global Header Navigation */}
             <Header />
@@ -95,11 +133,21 @@ export default function LandingPage() {
               </ScrollReveal>
 
               {/* Hero Headings */}
-              <ScrollReveal direction="up" distance={24} delay={100} className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+              <ScrollReveal direction="up" distance={24} delay={100} className="w-full max-w-4xl flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 <div className="self-stretch flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6">
                   <h1 className="w-full max-w-[820px] text-center text-[#37322F] text-[28px] xs:text-[34px] sm:text-[44px] md:text-[60px] lg:text-[76px] font-normal leading-[1.08] sm:leading-[1.12] md:leading-[1.15] font-serif px-2">
                     Products Built by People Who Build Tech
                   </h1>
+
+                  {/* EMC-style Dynamic Typewriter pill */}
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-[#37322F]/10 shadow-xs text-xs sm:text-sm font-mono text-[#37322F]">
+                    <span className="text-[#37322F]/60 hidden xs:inline">Hands-on Expertise:</span>
+                    <span className="font-semibold text-[#37322F]">
+                      {displayedText}
+                      <span className="animate-pulse font-bold text-[#37322F] ml-0.5">|</span>
+                    </span>
+                  </div>
+
                   <p className="w-full max-w-[620px] text-center text-[rgba(55,50,47,0.85)] text-sm sm:text-base md:text-lg leading-[1.5] font-sans px-2">
                     Cybersecurity training, tools, labs, services and community for students and clients.
                   </p>
@@ -126,6 +174,26 @@ export default function LandingPage() {
                 </Link>
               </ScrollReveal>
 
+              {/* EMC-Inspired Hero Impact Stat Row - Distinct Elevated Cards */}
+              <ScrollReveal direction="up" distance={20} delay={220} className="w-full max-w-4xl grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-10 sm:mt-12 px-4 sm:px-0">
+                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[rgba(55,50,47,0.1)] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center text-center">
+                  <span className="font-serif text-2xl sm:text-3xl font-medium text-[#37322F]">5,000+</span>
+                  <span className="text-[11px] sm:text-xs text-[#37322F]/80 font-sans mt-1 font-medium">Students Trained</span>
+                </div>
+                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[rgba(55,50,47,0.1)] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center text-center">
+                  <span className="font-serif text-2xl sm:text-3xl font-medium text-[#37322F]">100+</span>
+                  <span className="text-[11px] sm:text-xs text-[#37322F]/80 font-sans mt-1 font-medium">Events Partnered</span>
+                </div>
+                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[rgba(55,50,47,0.1)] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center text-center">
+                  <span className="font-serif text-2xl sm:text-3xl font-medium text-[#37322F]">40K+</span>
+                  <span className="text-[11px] sm:text-xs text-[#37322F]/80 font-sans mt-1 font-medium">Community Reach</span>
+                </div>
+                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[rgba(55,50,47,0.1)] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center text-center">
+                  <span className="font-serif text-2xl sm:text-3xl font-medium text-[#37322F]">300+</span>
+                  <span className="text-[11px] sm:text-xs text-[#37322F]/80 font-sans mt-1 font-medium">DRAGOZ Members</span>
+                </div>
+              </ScrollReveal>
+
               {/* Background decorative pattern */}
               <div className="absolute top-[232px] sm:top-[248px] md:top-[264px] lg:top-[300px] left-1/2 transform -translate-x-1/2 z-0 pointer-events-none">
                 <img
@@ -139,7 +207,7 @@ export default function LandingPage() {
               </div>
 
               {/* Cybersecurity Interface Preview (Black & White style) */}
-              <ScrollReveal direction="up" distance={30} delay={250} className="w-full max-w-[960px] lg:w-[960px] pt-4 sm:pt-6 pb-6 px-2 sm:px-4 md:px-6 lg:px-11 flex flex-col justify-center items-center relative z-5 my-8 sm:my-10">
+              <ScrollReveal direction="up" distance={30} delay={250} className="w-full max-w-5xl pt-4 sm:pt-6 pb-6 px-2 sm:px-4 md:px-6 lg:px-8 flex flex-col justify-center items-center relative z-5 my-8 sm:my-10">
                 <div className="w-full h-[240px] sm:h-[320px] md:h-[460px] lg:h-[520px] bg-[#1E1E1E] text-white shadow-[0px_4px_24px_rgba(0,0,0,0.12)] border border-[rgba(55,50,47,0.2)] rounded-[8px] sm:rounded-[10px] overflow-hidden flex flex-col">
                   {/* Mock Terminal Header */}
                   <div className="w-full h-9 bg-[#2A2A2A] px-4 flex items-center justify-between border-b border-[#333]">
@@ -226,20 +294,9 @@ export default function LandingPage() {
                 </div>
               </ScrollReveal>
 
-              {/* 3 Interactive Feature Tabs underneath Hero Preview */}
-              <ScrollReveal direction="up" distance={16} delay={300} className="self-stretch border-t border-[#E0DEDB] border-b border-[#E0DEDB] flex justify-center items-start">
-                <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-                  <div className="w-[120px] left-[-40px] top-[-120px] absolute flex flex-col">
-                    {Array.from({ length: 40 }).map((_, i) => (
-                      <div
-                        key={i}
-                        className="self-stretch h-3 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex-1 px-0 flex flex-col md:flex-row justify-center items-stretch gap-0">
+              {/* 3 Interactive Feature Tabs underneath Hero Preview - Distinct Cards */}
+              <ScrollReveal direction="up" distance={16} delay={300} className="w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 mt-8 sm:mt-12">
+                <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                   <FeatureTab
                     title="Tools & Labs"
                     description="Exploitry, BugAtlas, Versage, DarkX, and the OWASP 2026 AI Security Lab."
@@ -262,46 +319,54 @@ export default function LandingPage() {
                     onClick={() => handleCardClick(2)}
                   />
                 </div>
-
-                <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-                  <div className="w-[120px] left-[-40px] top-[-120px] absolute flex flex-col">
-                    {Array.from({ length: 40 }).map((_, i) => (
-                      <div
-                        key={i}
-                        className="self-stretch h-3 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-                      />
-                    ))}
-                  </div>
-                </div>
               </ScrollReveal>
-
-              {/* 4.2 Services Section */}
-              <ServicesSection />
-
-              {/* 4.3 Products Section (7 Tools + OWASP 2026 Lab) */}
-              <ProductsSection />
-
-              {/* 4.4 Courses Section (Starter ₹499 & Advanced ₹2,999) */}
-              <CoursesSection />
-
-              {/* 4.5 Community & Student Feedback (Respecting Blank Fictional Testimonials Brief) */}
-              <CommunitySection />
-
-              {/* 4.6 Achievements Section (100+ events, 5,000+ students, 40K+ followers) */}
-              <AchievementsSection />
-
-              {/* 4.7 Why Us Section (10 Core Pillars) */}
-              <WhyUsSection />
-
-              {/* Closing Primary CTA Section (Learn. Practice. Build.) */}
-              <CTASection />
-
-              {/* Global Footer Section */}
-              <FooterSection />
             </div>
+
+            {/* 4.4 Courses Section (Starter ₹499 & Advanced ₹2,999 - EMC Premier Programs style) */}
+            <CoursesSection />
+
+            {/* 4.2 Services Section */}
+            <ServicesSection />
+
+            {/* 4.3 Products Section (7 Tools + OWASP 2026 Lab) */}
+            <ProductsSection />
+
+            {/* EMC-Style Awards & Recognition Grid */}
+            <AwardsRecognition />
+
+            {/* 4.7 Why Us Section (10 Core Pillars) */}
+            <WhyUsSection />
+
+            {/* 4.5 Community Section (EMC-style stats, Discord, Prathyusha Meetup & Bilingual badges) */}
+            <CommunitySection />
+
+            {/* EMC-Style Featured Masterclasses & Free Tutorials */}
+            <FeaturedMasterclasses />
+
+            {/* 4.6 Achievements Section (100+ events, 5,000+ students, 40K+ followers) */}
+            <AchievementsSection />
+
+                        {/* Student Review / Testimonials Section (EMC & User Image Reference) */}
+            <TestimonialsSection />
+
+            {/* EMC-Style Giant Typographic Watermark Strip */}
+            <div className="w-full py-10 sm:py-16 overflow-hidden border-t border-b border-[#37322F]/10 flex items-center justify-center bg-white/40 select-none">
+              <p className="font-serif text-[28px] xs:text-[38px] sm:text-[56px] md:text-[80px] lg:text-[104px] tracking-[0.2em] sm:tracking-[0.28em] md:tracking-[0.32em] text-[#37322F]/[0.08] font-bold uppercase text-center whitespace-nowrap">
+                S E C U R E W O R L D Z
+              </p>
+            </div>
+
+            {/* Closing Primary CTA Section (Learn. Practice. Build.) */}
+            <CTASection />
+
+            {/* Global Footer Section */}
+            <FooterSection />
           </div>
         </div>
       </div>
+
+      {/* Floating EMC-Style Career Counselor / WhatsApp Guidance Widget */}
+      <CareerGuidanceDialog />
     </div>
   )
 }
@@ -321,26 +386,26 @@ function FeatureTab({
 }) {
   return (
     <div
-      className={`w-full md:flex-1 px-6 py-5 overflow-hidden flex flex-col justify-start items-start gap-2 cursor-pointer relative border-b md:border-b-0 last:border-b-0 transition-colors ${
+      className={`w-full rounded-2xl p-6 overflow-hidden flex flex-col justify-start items-start gap-2 cursor-pointer relative transition-all duration-300 border ${
         isActive
-          ? "bg-white shadow-[0px_0px_0px_0.75px_#E0DEDB_inset]"
-          : "border-l-0 border-r-0 md:border border-[#E0DEDB]/80 hover:bg-white/50"
+          ? "bg-white border-[#37322F]/20 shadow-md ring-1 ring-[#37322F]/10 -translate-y-0.5"
+          : "bg-white/60 border-[rgba(55,50,47,0.1)] hover:bg-white hover:border-[#37322F]/20 shadow-xs"
       }`}
       onClick={onClick}
     >
       {isActive && (
-        <div className="absolute top-0 left-0 w-full h-0.5 bg-[rgba(50,45,43,0.08)]">
+        <div className="absolute top-0 left-0 w-full h-1 bg-[#37322F]/10 rounded-t-2xl overflow-hidden">
           <div
-            className="h-full bg-[#322D2B] transition-all duration-100 ease-linear"
+            className="h-full bg-[#37322F] transition-all duration-100 ease-linear"
             style={{ width: `${progress}%` }}
           />
         </div>
       )}
 
-      <div className="self-stretch flex justify-center flex-col text-[#49423D] text-sm font-semibold leading-6 font-sans">
+      <div className="self-stretch flex justify-center flex-col text-[#37322F] text-base font-semibold leading-snug font-sans">
         {title}
       </div>
-      <div className="self-stretch text-[#605A57] text-[13px] font-normal leading-[22px] font-sans">
+      <div className="self-stretch text-[#605A57] text-xs font-normal leading-relaxed font-sans">
         {description}
       </div>
     </div>
