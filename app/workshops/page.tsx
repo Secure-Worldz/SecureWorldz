@@ -63,7 +63,7 @@ export default function WorkshopsPage() {
                   {/* Left Column: Workshop Details */}
                   <ScrollReveal direction="left" distance={24} delay={100} className="flex-1 flex flex-col gap-6">
                     <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 bg-[#37322F] text-white text-xs font-semibold rounded-full font-sans">
+                      <span className="px-3 py-1 bg-[#181716] text-[#39F763] text-xs font-semibold rounded-full font-sans border border-[#39F763]/30">
                         Upcoming Workshop
                       </span>
                       <span className="px-3 py-1 bg-[rgba(55,50,47,0.06)] text-[#37322F] text-xs font-medium rounded-full font-sans">
@@ -75,7 +75,7 @@ export default function WorkshopsPage() {
                       {upcomingWorkshop.title}
                     </h2>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[#49423D] font-sans p-4 bg-[#F7F5F3] rounded-xl border border-[rgba(55,50,47,0.1)]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[#49423D] font-sans p-4 bg-[#F7F5F3] rounded-xl border border-[rgba(55,50,47,0.1)] hover:border-[#39F763]/40 transition-colors">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-[#37322F]" />
                         <span>Date: <strong>{upcomingWorkshop.date}</strong></span>
@@ -115,8 +115,8 @@ export default function WorkshopsPage() {
                   </ScrollReveal>
 
                   {/* Right Column: Registration Block */}
-                  <ScrollReveal direction="right" distance={24} delay={150} className="w-full lg:w-[380px] p-6 sm:p-8 bg-white border border-[rgba(55,50,47,0.15)] rounded-2xl shadow-sm flex flex-col gap-4">
-                    <h3 className="text-lg font-serif text-[#37322F]">
+                  <ScrollReveal direction="right" distance={24} delay={150} className="w-full lg:w-[380px] p-6 sm:p-8 bg-white border border-[rgba(55,50,47,0.15)] rounded-2xl shadow-sm hover:border-[#39F763]/40 transition-all flex flex-col gap-4 group">
+                    <h3 className="text-lg font-serif text-[#37322F] group-hover:text-black transition-colors">
                       Register for Free Access
                     </h3>
                     <p className="text-xs text-[#605A57] font-sans leading-relaxed">
@@ -125,7 +125,7 @@ export default function WorkshopsPage() {
 
                     {isSubmitted ? (
                       <div className="p-4 bg-[rgba(55,50,47,0.05)] rounded-xl border border-[rgba(55,50,47,0.1)] text-center flex flex-col gap-2 my-4">
-                        <CheckCircle2 className="w-8 h-8 text-[#37322F] mx-auto" />
+                        <CheckCircle2 className="w-8 h-8 text-[#39F763] mx-auto" />
                         <span className="text-sm font-semibold text-[#37322F] font-sans">
                           Registration Confirmed!
                         </span>
@@ -145,7 +145,7 @@ export default function WorkshopsPage() {
                             placeholder="John Doe"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="px-3 py-2 bg-[#F7F5F3] border border-[rgba(55,50,47,0.12)] rounded-lg text-xs focus:outline-none focus:border-[#37322F]"
+                            className="px-3 py-2 bg-[#F7F5F3] border border-[rgba(55,50,47,0.12)] rounded-lg text-xs focus:outline-none focus:border-[#39F763]/60 focus:ring-1 focus:ring-[#39F763]/30 transition-all"
                           />
                         </div>
 
@@ -159,7 +159,7 @@ export default function WorkshopsPage() {
                             placeholder="john@example.com"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="px-3 py-2 bg-[#F7F5F3] border border-[rgba(55,50,47,0.12)] rounded-lg text-xs focus:outline-none focus:border-[#37322F]"
+                            className="px-3 py-2 bg-[#F7F5F3] border border-[rgba(55,50,47,0.12)] rounded-lg text-xs focus:outline-none focus:border-[#39F763]/60 focus:ring-1 focus:ring-[#39F763]/30 transition-all"
                           />
                         </div>
 
@@ -173,16 +173,16 @@ export default function WorkshopsPage() {
                             placeholder="+91 98765 43210"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="px-3 py-2 bg-[#F7F5F3] border border-[rgba(55,50,47,0.12)] rounded-lg text-xs focus:outline-none focus:border-[#37322F]"
+                            className="px-3 py-2 bg-[#F7F5F3] border border-[rgba(55,50,47,0.12)] rounded-lg text-xs focus:outline-none focus:border-[#39F763]/60 focus:ring-1 focus:ring-[#39F763]/30 transition-all"
                           />
                         </div>
 
                         <button
                           type="submit"
-                          className="w-full mt-2 py-3 bg-[#37322F] hover:bg-[#201D1B] text-white text-xs font-medium rounded-full shadow-xs flex justify-center items-center gap-2 transition-colors font-sans"
+                          className="w-full mt-2 py-3 bg-[#181716] hover:bg-[#39F763] hover:text-black text-white text-xs font-semibold rounded-full shadow-xs flex justify-center items-center gap-2 transition-all font-sans group/btn"
                         >
                           <span>Reserve My Seat</span>
-                          <Send className="w-3.5 h-3.5" />
+                          <Send className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:text-black transition-all" />
                         </button>
                       </form>
                     )}
@@ -192,10 +192,10 @@ export default function WorkshopsPage() {
                         href="https://wa.me/917845088387?text=Hi%20SECUREWORLDZ%2C%20I%20want%20to%20register%20for%20the%20Vibe%20Hacking%20workshop%20on%20October%2030."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-[#37322F] hover:underline font-medium font-sans flex items-center justify-center gap-1"
+                        className="text-xs text-[#37322F] hover:text-black font-medium font-sans flex items-center justify-center gap-1 group/wa transition-colors"
                       >
                         <span>Or RSVP via WhatsApp</span>
-                        <ArrowRight className="w-3 h-3" />
+                        <ArrowRight className="w-3 h-3 group-hover/wa:translate-x-1 group-hover/wa:text-[#39F763] transition-all" />
                       </a>
                     </div>
                   </ScrollReveal>
@@ -222,7 +222,7 @@ export default function WorkshopsPage() {
                       delay={index * 120}
                       direction="up"
                       distance={20}
-                      className="p-6 bg-white border border-[rgba(55,50,47,0.12)] rounded-xl flex flex-col justify-between gap-4 h-full"
+                      className="p-6 bg-white border border-[rgba(55,50,47,0.12)] rounded-xl flex flex-col justify-between gap-4 h-full shadow-xs hover:border-[#39F763]/40 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
                     >
                       <div className="flex flex-col gap-2">
                         <div className="flex justify-between items-center">
@@ -233,11 +233,11 @@ export default function WorkshopsPage() {
                             Completed
                           </span>
                         </div>
-                        <h4 className="text-lg font-serif text-[#37322F]">
+                        <h4 className="text-lg font-serif text-[#37322F] group-hover:text-black transition-colors">
                           {evt.title}
                         </h4>
                         <div className="flex items-center gap-1.5 text-xs text-[#605A57] font-sans">
-                          <MapPin className="w-3.5 h-3.5 text-[#37322F]" />
+                          <MapPin className="w-3.5 h-3.5 text-[#37322F] group-hover:text-[#39F763] transition-colors" />
                           <span>{evt.mode}</span>
                         </div>
                         <p className="text-xs text-[#605A57] font-sans leading-relaxed pt-1">

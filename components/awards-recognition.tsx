@@ -9,43 +9,43 @@ export default function AwardsRecognition() {
       title: "100+ National Events",
       subtitle: "Sponsored & Partnered",
       description: "Recognized for sponsoring technical symposiums, hackathons, and cybersecurity conclaves nationwide.",
-      icon: <Trophy className="w-5 h-5 text-[#37322F]" />,
+      icon: <Trophy className="w-5 h-5 text-[#37322F] group-hover:text-[#39F763] transition-colors" />,
       badge: "National Reach",
     },
     {
       title: "Prathyusha Engineering College",
       subtitle: "Institutional Partner",
       description: "Hosted the landmark DRAGOZ Community Meetup 2026 featuring live penetration testing demonstrations.",
-      icon: <Award className="w-5 h-5 text-[#37322F]" />,
+      icon: <Award className="w-5 h-5 text-[#37322F] group-hover:text-[#39F763] transition-colors" />,
       badge: "Campus Collaboration",
     },
     {
       title: "OWASP 2026 Framework",
       subtitle: "Agentic AI Security Alignment",
       description: "Pioneered 10 hands-on simulation labs mapping directly to OWASP ASI-01 through ASI-10 threat categories.",
-      icon: <ShieldCheck className="w-5 h-5 text-[#37322F]" />,
+      icon: <ShieldCheck className="w-5 h-5 text-[#37322F] group-hover:text-[#39F763] transition-colors" />,
       badge: "Curriculum Standard",
     },
     {
       title: "CyberJai YouTube Milestone",
       subtitle: "Cybersecurity Tech Educator",
       description: "Delivering free, high-impact cybersecurity and vibe hacking tutorials across English and Tamil audiences.",
-      icon: <Youtube className="w-5 h-5 text-[#37322F]" />,
+      icon: <Youtube className="w-5 h-5 text-[#37322F] group-hover:text-[#39F763] transition-colors" />,
       badge: "Community Recognition",
     },
   ]
 
   return (
-    <section id="recognition" className="w-full py-20 md:py-28 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <section id="recognition" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Header Section */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mb-12 sm:mb-16 flex flex-col justify-center items-center text-center">
+      <div className="self-stretch px-4 sm:px-6 md:px-24 py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center">
         <ScrollReveal className="w-full max-w-[620px] flex flex-col justify-start items-center gap-4 text-center">
           <div className="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] rounded-[90px] flex items-center gap-2 border border-[rgba(2,6,23,0.08)]">
             <Sparkles className="w-3.5 h-3.5 text-[#37322F]" />
             <span className="text-[#37322F] text-xs font-medium font-sans">Awards & Recognition</span>
           </div>
 
-          <h2 className="text-[#37322F] text-3xl sm:text-4xl md:text-5xl font-normal font-serif tracking-tight leading-tight">
+          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-5xl font-normal font-serif tracking-tight leading-tight">
             Recognized for Practical Excellence
           </h2>
           <p className="text-[#605A57] text-sm sm:text-base font-normal leading-relaxed font-sans max-w-[540px]">
@@ -54,23 +54,38 @@ export default function AwardsRecognition() {
         </ScrollReveal>
       </div>
 
-      {/* 4 Recognition Cards with Distinct Cards & Neat Spacing */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Connected Editorial Grid for Recognitions */}
+      <div className="self-stretch flex justify-center items-start">
+        {/* Left decorative hatch */}
+        <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
+          <div className="w-[120px] left-[-40px] top-[-120px] absolute flex flex-col">
+            {Array.from({ length: 80 }).map((_, i) => (
+              <div
+                key={i}
+                className="self-stretch h-3 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* 4 Recognition Blocks in Connected Grid */}
+        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
           {recognitions.map((item, index) => (
             <ScrollReveal
               key={index}
               delay={index * 90}
               direction="up"
               distance={20}
-              className="p-7 sm:p-8 flex flex-col justify-between items-start gap-4 bg-white rounded-2xl border border-[rgba(55,50,47,0.1)] shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+              className={`p-6 sm:p-8 flex flex-col justify-between items-start gap-4 border-b border-[rgba(55,50,47,0.12)] bg-[#F7F5F3] hover:bg-white transition-all duration-300 group ${
+                index < 3 ? "lg:border-r border-[rgba(55,50,47,0.12)]" : ""
+              } ${index % 2 === 0 ? "md:border-r lg:border-r-0 border-[rgba(55,50,47,0.12)]" : ""}`}
             >
               <div className="flex flex-col gap-4 w-full">
                 <div className="flex justify-between items-center w-full">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(55,50,47,0.04)] border border-[rgba(55,50,47,0.08)] flex items-center justify-center shadow-xs">
+                  <div className="w-10 h-10 rounded-lg bg-white border border-[rgba(55,50,47,0.1)] flex items-center justify-center shadow-xs group-hover:bg-[#181716] group-hover:text-[#39F763] transition-all">
                     {item.icon}
                   </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[rgba(55,50,47,0.06)] text-[#37322F] font-sans">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[rgba(55,50,47,0.06)] text-[#37322F] group-hover:bg-[#181716] group-hover:text-[#39F763] transition-all font-sans">
                     {item.badge}
                   </span>
                 </div>
@@ -79,7 +94,7 @@ export default function AwardsRecognition() {
                   <span className="text-[11px] font-medium text-[#828387] uppercase tracking-wide font-sans block mb-1">
                     Recognized for
                   </span>
-                  <h3 className="text-base sm:text-lg font-semibold text-[#37322F] font-sans leading-snug">
+                  <h3 className="text-base sm:text-lg font-semibold text-[#37322F] group-hover:text-black transition-colors font-sans leading-snug">
                     {item.title}
                   </h3>
                   <div className="text-xs font-medium text-[#49423D] font-sans mb-2">
@@ -92,11 +107,23 @@ export default function AwardsRecognition() {
               </div>
 
               <div className="pt-3 border-t border-[rgba(55,50,47,0.08)] w-full flex items-center gap-1.5 text-[11px] text-[#49423D] font-sans font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#37322F]" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#37322F] group-hover:text-[#39F763] transition-colors" />
                 <span>Verified by SECUREWORLDZ</span>
               </div>
             </ScrollReveal>
           ))}
+        </div>
+
+        {/* Right decorative hatch */}
+        <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
+          <div className="w-[120px] left-[-40px] top-[-120px] absolute flex flex-col">
+            {Array.from({ length: 80 }).map((_, i) => (
+              <div
+                key={i}
+                className="self-stretch h-3 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -228,13 +228,13 @@ export default function LandingPage() {
 
             {/* Course Tracks Teaser Strip Linking to /courses */}
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10 border-b border-[rgba(55,50,47,0.08)]">
-              <ScrollReveal direction="up" distance={18} className="p-6 sm:p-8 rounded-3xl bg-white border border-[rgba(55,50,47,0.08)] shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
+              <ScrollReveal direction="up" distance={18} className="p-6 sm:p-8 rounded-3xl bg-white border border-[rgba(55,50,47,0.08)] shadow-xs hover:border-[#39F763]/40 hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col md:flex-row items-center justify-between gap-6 group">
                 <div className="flex flex-col gap-2 text-center md:text-left">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(55,50,47,0.05)] text-xs font-sans font-medium text-[#37322F] w-fit mx-auto md:mx-0">
-                    <GraduationCap className="w-3.5 h-3.5 text-[#37322F]" />
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(55,50,47,0.05)] text-xs font-sans font-medium text-[#37322F] w-fit mx-auto md:mx-0 group-hover:bg-[#181716] group-hover:text-[#39F763] transition-all">
+                    <GraduationCap className="w-3.5 h-3.5 group-hover:text-[#39F763] transition-colors" />
                     <span>Professional Training Tracks</span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-serif text-[#1C1A18] font-normal">
+                  <h2 className="text-xl sm:text-2xl font-serif text-[#1C1A18] group-hover:text-black font-normal transition-colors">
                     Starter Program (₹499) · Advanced Career Track (₹2,999)
                   </h2>
                   <p className="text-xs sm:text-sm text-[#605A57] font-sans max-w-[560px]">
@@ -246,7 +246,7 @@ export default function LandingPage() {
                   className="px-7 py-3.5 bg-[#181716] hover:bg-[#39F763] hover:text-black text-white text-xs sm:text-sm font-semibold rounded-full shadow-xs transition-all flex items-center gap-2 shrink-0 font-sans group/btn"
                 >
                   <span>View All Courses & Syllabi</span>
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </ScrollReveal>
             </div>

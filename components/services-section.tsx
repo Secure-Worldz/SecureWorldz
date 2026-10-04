@@ -64,12 +64,12 @@ export default function ServicesSection() {
               delay={index * 60}
               direction="up"
               distance={20}
-              className="w-full bg-white rounded-2xl p-6 sm:p-7 border border-[rgba(55,50,47,0.1)] shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              className="w-full bg-white rounded-2xl p-6 sm:p-7 border border-[rgba(55,50,47,0.1)] shadow-xs hover:border-[#39F763]/40 hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 {/* Top Row: Icon + Badge */}
                 <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(55,50,47,0.04)] border border-[rgba(55,50,47,0.08)] flex items-center justify-center text-[#1C1A18] group-hover:bg-[#181716] transition-all shadow-xs">
+                  <div className="w-11 h-11 rounded-xl bg-[rgba(55,50,47,0.04)] border border-[rgba(55,50,47,0.08)] flex items-center justify-center text-[#1C1A18] group-hover:bg-[#181716] group-hover:text-[#39F763] transition-all shadow-xs">
                     {getServiceIcon(service.id)}
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-[rgba(55,50,47,0.05)] text-[10px] font-sans font-semibold uppercase tracking-[0.14em] text-[#82807C]">

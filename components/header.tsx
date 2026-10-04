@@ -46,7 +46,7 @@ export function Header() {
             href="https://wa.me/917845088387?text=Hi%20SECUREWORLDZ%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses%20and%20services."
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 sm:px-4 py-1.5 bg-[#37322F] hover:bg-[#201D1B] text-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] rounded-full flex justify-center items-center text-xs sm:text-[13px] font-medium font-sans transition-colors"
+            className="px-3 sm:px-4 py-1.5 bg-[#181716] hover:bg-[#39F763] hover:text-black text-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] rounded-full flex justify-center items-center text-xs sm:text-[13px] font-semibold font-sans transition-all"
           >
             Talk to Us
           </a>

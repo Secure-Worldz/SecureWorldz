@@ -67,9 +67,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="w-full px-4 sm:px-8 pt-8 pb-4 flex justify-between items-center border-b border-[rgba(55,50,47,0.08)]">
               <Link
                 href="/blogs"
-                className="inline-flex items-center gap-2 text-xs font-medium text-[#605A57] hover:text-[#37322F] transition-colors font-sans"
+                className="inline-flex items-center gap-2 text-xs font-medium text-[#605A57] hover:text-black transition-colors font-sans group/back"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-4 h-4 group-hover/back:-translate-x-1 group-hover/back:text-[#39F763] transition-all" />
                 <span>Back to all articles</span>
               </Link>
 
@@ -130,10 +130,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                       href={`https://wa.me/?text=${encodeURIComponent(`${post.title} - Read at SECUREWORLDZ`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-full bg-white border border-[rgba(55,50,47,0.12)] hover:bg-[#37322F] hover:text-white transition-colors"
+                      className="p-1.5 rounded-full bg-white border border-[rgba(55,50,47,0.12)] hover:bg-[#181716] hover:text-[#39F763] hover:border-[#39F763]/40 transition-all shadow-xs group/share"
                       aria-label="Share on WhatsApp"
                     >
-                      <Share2 className="w-3.5 h-3.5" />
+                      <Share2 className="w-3.5 h-3.5 group-hover/share:text-[#39F763] transition-colors" />
                     </a>
                   </div>
                 </div>
@@ -202,15 +202,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               </ScrollReveal>
 
               {/* Course & Product CTA Banner within Article */}
-              <ScrollReveal direction="up" distance={20} className="mt-10 p-6 sm:p-8 bg-white border border-[rgba(55,50,47,0.15)] rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 shadow-sm">
+              <ScrollReveal direction="up" distance={20} className="mt-10 p-6 sm:p-8 bg-white border border-[rgba(55,50,47,0.1)] rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 shadow-xs hover:border-[#39F763]/40 hover:shadow-md transition-all duration-300 group">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-[#37322F]" />
+                    <Shield className="w-4 h-4 text-[#37322F] group-hover:text-[#39F763] transition-colors" />
                     <span className="text-xs font-semibold uppercase tracking-wider text-[#37322F] font-sans">
                       Advance Your Practical Skills
                     </span>
                   </div>
-                  <h4 className="text-xl sm:text-2xl font-serif text-[#37322F]">
+                  <h4 className="text-xl sm:text-2xl font-serif text-[#37322F] group-hover:text-black transition-colors">
                     Ready to build real cybersecurity tools?
                   </h4>
                   <p className="text-xs sm:text-sm text-[#605A57] font-sans max-w-[480px]">
@@ -220,10 +220,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
                 <Link
                   href="/courses"
-                  className="px-6 py-3 bg-[#37322F] hover:bg-[#201D1B] text-white text-xs sm:text-sm font-medium rounded-full shadow-xs flex items-center gap-2 shrink-0 font-sans transition-colors"
+                  className="px-6 py-3 bg-[#181716] hover:bg-[#39F763] hover:text-black text-white text-xs sm:text-sm font-semibold rounded-full shadow-xs flex items-center gap-2 shrink-0 font-sans transition-all group/btn"
                 >
                   <span>Explore Courses</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </ScrollReveal>
             </main>
@@ -237,32 +237,34 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   </h3>
                   <Link
                     href="/blogs"
-                    className="text-xs font-semibold text-[#37322F] hover:underline font-sans"
+                    className="text-xs font-semibold text-[#37322F] hover:text-black font-sans flex items-center gap-1 group/all"
                   >
-                    View all 9 blogs →
+                    <span>View all 9 blogs</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/all:translate-x-1 group-hover/all:text-[#39F763] transition-all" />
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   {relatedPosts.map((related, index) => (
                     <ScrollReveal key={related.id} delay={index * 100} direction="up" distance={18}>
                       <Link
                         href={`/blogs/${related.slug}`}
-                        className="p-5 bg-white border border-[rgba(55,50,47,0.12)] rounded-xl hover:shadow-sm transition-all flex flex-col justify-between gap-3 group h-full"
+                        className="p-5 bg-white border border-[rgba(55,50,47,0.1)] rounded-2xl shadow-xs hover:border-[#39F763]/40 hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between gap-3 group h-full"
                       >
                         <div className="flex flex-col gap-2">
-                          <span className="text-[10px] font-semibold uppercase tracking-wider text-[#828387] font-sans">
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-[#828387] group-hover:text-[#39F763] transition-colors font-sans">
                             {related.category}
                           </span>
-                          <h4 className="text-sm font-semibold text-[#37322F] group-hover:underline leading-snug line-clamp-2 font-sans">
+                          <h4 className="text-sm font-semibold text-[#37322F] group-hover:text-black leading-snug line-clamp-2 font-sans transition-colors">
                             {related.title}
                           </h4>
                           <p className="text-xs text-[#605A57] line-clamp-2 font-sans">
                             {related.excerpt}
                           </p>
                         </div>
-                        <span className="text-[11px] font-medium text-[#37322F] flex items-center gap-1 font-sans pt-2 border-t border-neutral-100">
-                          Read post <ArrowRight className="w-3 h-3" />
+                        <span className="text-[11px] font-medium text-[#37322F] group-hover:text-black flex items-center gap-1 font-sans pt-2 border-t border-neutral-100 transition-colors">
+                          <span>Read post</span>
+                          <ArrowRight className="w-3 h-3 group-hover:translate-x-1 group-hover:text-[#39F763] transition-all" />
                         </span>
                       </Link>
                     </ScrollReveal>

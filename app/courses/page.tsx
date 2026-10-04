@@ -142,10 +142,10 @@ export default function CoursesPage() {
                   <button
                     key={level}
                     onClick={() => setSelectedLevel(level)}
-                    className={`px-5 py-2 rounded-full text-xs font-medium font-sans transition-all duration-200 ${
+                    className={`px-5 py-2 rounded-full text-xs font-medium font-sans transition-all duration-200 border ${
                       selectedLevel === level
-                        ? "bg-[#181716] text-white shadow-xs border border-[#39F763]/40"
-                        : "text-[#605A57] hover:text-[#37322F]"
+                        ? "bg-[#181716] text-[#39F763] shadow-xs border-[#39F763]/40"
+                        : "text-[#605A57] border-transparent hover:text-[#181716] hover:bg-white hover:border-[#39F763]/30"
                     }`}
                   >
                     {level === "All" ? "All Programs" : `${level} Track`}
@@ -166,27 +166,27 @@ export default function CoursesPage() {
                       key={course.id}
                       delay={index * 120}
                       direction="up"
-                      className={`p-8 sm:p-10 rounded-3xl flex flex-col justify-between transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 ${
+                      className={`p-8 sm:p-10 rounded-3xl flex flex-col justify-between transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 group ${
                         isFeatured
                           ? "bg-[#1C1A18] text-white border border-[#39F763]/30 shadow-[0_16px_40px_-10px_rgba(57,247,99,0.12)] hover:border-[#39F763]/60"
-                          : "bg-white text-[#37322F] border border-[rgba(55,50,47,0.1)]"
+                          : "bg-white text-[#37322F] border border-[rgba(55,50,47,0.1)] hover:border-[#39F763]/40"
                       }`}
                     >
                       <div className="flex flex-col gap-6">
                         {/* Top Bar with Badges */}
                         <div className="flex justify-between items-center">
                           <span
-                            className={`text-xs uppercase font-semibold px-3 py-1 rounded-full font-sans tracking-wide ${
+                            className={`text-xs uppercase font-semibold px-3 py-1 rounded-full font-sans tracking-wide transition-all ${
                               isFeatured
                                 ? "bg-[#39F763]/15 text-[#39F763] border border-[#39F763]/30"
-                                : "bg-[rgba(55,50,47,0.06)] text-[#37322F]"
+                                : "bg-[rgba(55,50,47,0.06)] text-[#37322F] group-hover:bg-[#181716] group-hover:text-[#39F763]"
                             }`}
                           >
                             {course.badge}
                           </span>
 
                           <div className="flex items-center gap-1.5 text-xs font-sans font-medium">
-                            <Clock className="w-3.5 h-3.5 opacity-70" />
+                            <Clock className="w-3.5 h-3.5 opacity-70 group-hover:text-[#39F763] transition-colors" />
                             <span>{course.duration}</span>
                           </div>
                         </div>
@@ -194,8 +194,8 @@ export default function CoursesPage() {
                         {/* Title & Description */}
                         <div>
                           <h2
-                            className={`text-2xl sm:text-3xl font-serif mb-2 ${
-                              isFeatured ? "text-white" : "text-[#37322F]"
+                            className={`text-2xl sm:text-3xl font-serif mb-2 transition-colors ${
+                              isFeatured ? "text-white" : "text-[#37322F] group-hover:text-black"
                             }`}
                           >
                             {course.title}
@@ -252,7 +252,7 @@ export default function CoursesPage() {
                               isFeatured ? "bg-white/5 border-white/10" : "bg-neutral-50 border-[rgba(55,50,47,0.08)]"
                             }`}
                           >
-                            <BookOpen className="w-3.5 h-3.5 shrink-0" />
+                            <BookOpen className="w-3.5 h-3.5 shrink-0 group-hover:text-[#39F763] transition-colors" />
                             <span>{course.format}</span>
                           </div>
                           <div
@@ -260,7 +260,7 @@ export default function CoursesPage() {
                               isFeatured ? "bg-white/5 border-white/10" : "bg-neutral-50 border-[rgba(55,50,47,0.08)]"
                             }`}
                           >
-                            <Award className="w-3.5 h-3.5 shrink-0" />
+                            <Award className="w-3.5 h-3.5 shrink-0 group-hover:text-[#39F763] transition-colors" />
                             <span>Verified Certificate</span>
                           </div>
                           <div
@@ -268,7 +268,7 @@ export default function CoursesPage() {
                               isFeatured ? "bg-white/5 border-white/10" : "bg-neutral-50 border-[rgba(55,50,47,0.08)]"
                             }`}
                           >
-                            <Users className="w-3.5 h-3.5 shrink-0" />
+                            <Users className="w-3.5 h-3.5 shrink-0 group-hover:text-[#39F763] transition-colors" />
                             <span>DRAGOZ Community</span>
                           </div>
                           <div
@@ -276,7 +276,7 @@ export default function CoursesPage() {
                               isFeatured ? "bg-white/5 border-white/10" : "bg-neutral-50 border-[rgba(55,50,47,0.08)]"
                             }`}
                           >
-                            <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                            <Sparkles className="w-3.5 h-3.5 shrink-0 group-hover:text-[#39F763] transition-colors" />
                             <span>Practitioner Guidance</span>
                           </div>
                         </div>
@@ -317,8 +317,10 @@ export default function CoursesPage() {
                             {course.inclusions.map((inc, i) => (
                               <li key={i} className="flex items-start gap-2">
                                 <span
-                                  className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${
-                                    isFeatured ? "bg-[#39F763] shadow-[0_0_4px_#39F763]" : "bg-[#37322F]"
+                                  className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 transition-all ${
+                                    isFeatured
+                                      ? "bg-[#39F763] shadow-[0_0_4px_#39F763]"
+                                      : "bg-[#37322F] group-hover:bg-[#39F763] group-hover:shadow-[0_0_4px_#39F763]"
                                   }`}
                                 />
                                 <span className={isFeatured ? "text-white/80" : "text-[#605A57]"}>{inc}</span>
@@ -336,14 +338,14 @@ export default function CoursesPage() {
                           )}%20(${course.price}).`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`w-full py-3.5 rounded-full flex justify-center items-center gap-2 text-xs sm:text-sm font-sans transition-all shadow-xs ${
+                          className={`w-full py-3.5 rounded-full flex justify-center items-center gap-2 text-xs sm:text-sm font-sans transition-all shadow-xs group/btn ${
                             isFeatured
                               ? "bg-[#39F763] hover:bg-[#2ee656] text-black font-semibold shadow-[0_4px_16px_rgba(57,247,99,0.3)]"
-                              : "bg-[#37322F] text-white hover:bg-[#201D1B] font-medium"
+                              : "bg-[#181716] text-white hover:bg-[#39F763] hover:text-black hover:shadow-[0_4px_16px_rgba(57,247,99,0.25)] font-semibold"
                           }`}
                         >
                           <span>Enroll Now ({course.price})</span>
-                          <ArrowRight className="w-4 h-4" />
+                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                         </a>
                       </div>
                     </ScrollReveal>
@@ -354,9 +356,9 @@ export default function CoursesPage() {
 
             {/* Program Comparison Table (Starter vs Advanced) */}
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-14">
-              <ScrollReveal direction="up" distance={20} className="w-full bg-white rounded-3xl border border-[rgba(55,50,47,0.1)] p-6 sm:p-10 shadow-xs">
+              <ScrollReveal direction="up" distance={20} className="w-full bg-white rounded-3xl border border-[rgba(55,50,47,0.1)] p-6 sm:p-10 shadow-xs hover:border-[#39F763]/40 hover:shadow-md transition-all duration-300 group">
                 <div className="text-center max-w-[620px] mx-auto mb-8 sm:mb-10">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#828387] font-sans">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#828387] group-hover:text-[#39F763] transition-colors font-sans">
                     Track Comparison
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-serif text-[#1C1A18] font-normal mt-1">
@@ -378,7 +380,7 @@ export default function CoursesPage() {
                     </thead>
                     <tbody className="divide-y divide-[rgba(55,50,47,0.06)]">
                       {comparisonFeatures.map((row, i) => (
-                        <tr key={i} className="hover:bg-[#F7F5F3]/50 transition-colors">
+                        <tr key={i} className="hover:bg-[#39F763]/5 transition-colors">
                           <td className="py-3.5 px-4 font-medium text-[#49423D]">{row.name}</td>
                           <td className="py-3.5 px-4 text-[#605A57]">{row.starter}</td>
                           <td className="py-3.5 px-4 font-medium text-[#1C1A18]">{row.advanced}</td>
@@ -392,7 +394,7 @@ export default function CoursesPage() {
 
             {/* Verified Certification & Career Assurance */}
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-14">
-              <ScrollReveal direction="up" distance={20} className="w-full rounded-3xl bg-gradient-to-br from-[#1C1A18] to-[#141416] text-white p-8 sm:p-12 border border-white/[0.08] shadow-lg flex flex-col md:flex-row items-center justify-between gap-8">
+              <ScrollReveal direction="up" distance={20} className="w-full rounded-3xl bg-gradient-to-br from-[#1C1A18] to-[#141416] text-white p-8 sm:p-12 border border-white/[0.08] shadow-lg flex flex-col md:flex-row items-center justify-between gap-8 hover:border-[#39F763]/40 hover:shadow-[0_16px_40px_-10px_rgba(57,247,99,0.2)] transition-all duration-300 group">
                 <div className="flex flex-col gap-3 max-w-[620px]">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#39F763]/15 border border-[#39F763]/30 text-[#39F763] text-xs font-sans font-medium w-fit">
                     <FileCheck className="w-3.5 h-3.5" />
@@ -409,7 +411,7 @@ export default function CoursesPage() {
                   href="https://wa.me/917845088387?text=Hi%20SECUREWORLDZ%2C%20I%20have%20questions%20about%20the%20certificate%20and%20curriculum."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3.5 bg-white hover:bg-[#39F763] hover:text-black text-[#1C1A18] font-semibold text-xs sm:text-sm rounded-full shadow-md transition-all shrink-0 font-sans"
+                  className="px-8 py-3.5 bg-white hover:bg-[#39F763] hover:text-black hover:shadow-[0_4px_16px_rgba(57,247,99,0.35)] text-[#1C1A18] font-semibold text-xs sm:text-sm rounded-full shadow-md transition-all shrink-0 font-sans"
                 >
                   Speak with an Instructor
                 </a>
@@ -434,18 +436,18 @@ export default function CoursesPage() {
                   return (
                     <div
                       key={index}
-                      className="bg-white rounded-2xl border border-[rgba(55,50,47,0.1)] overflow-hidden shadow-2xs transition-all"
+                      className="bg-white rounded-2xl border border-[rgba(55,50,47,0.1)] overflow-hidden shadow-2xs hover:border-[#39F763]/40 transition-all duration-300 group"
                     >
                       <button
                         onClick={() => setOpenFaq(isOpen ? null : index)}
-                        className="w-full p-5 sm:p-6 text-left flex justify-between items-center gap-4 hover:bg-[#F7F5F3]/50 transition-colors"
+                        className="w-full p-5 sm:p-6 text-left flex justify-between items-center gap-4 hover:bg-[#39F763]/5 transition-colors"
                       >
-                        <span className="text-sm sm:text-base font-semibold text-[#1C1A18] font-sans">
+                        <span className="text-sm sm:text-base font-semibold text-[#1C1A18] group-hover:text-black font-sans transition-colors">
                           {faq.q}
                         </span>
                         <ChevronDown
-                          className={`w-4 h-4 text-[#828387] shrink-0 transition-transform duration-200 ${
-                            isOpen ? "rotate-180 text-[#1C1A18]" : ""
+                          className={`w-4 h-4 text-[#828387] shrink-0 transition-all duration-200 ${
+                            isOpen ? "rotate-180 text-[#39F763]" : "group-hover:text-[#39F763]"
                           }`}
                         />
                       </button>
