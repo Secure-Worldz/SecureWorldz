@@ -6,6 +6,7 @@ export interface SecurityProduct {
   category: "Tool" | "Lab"
   features?: string[]
   badge?: string
+  spec?: string
 }
 
 export const PRODUCTS: SecurityProduct[] = [
@@ -17,6 +18,13 @@ export const PRODUCTS: SecurityProduct[] = [
       "Collection of security tools built for real exploitation work, testing, research and defensive workflows. Each tool targets a specific security problem.",
     category: "Tool",
     badge: "Exploitation Suite",
+    spec: "Offensive Arsenal",
+    features: [
+      "Automated Fuzzing",
+      "Payload Generators",
+      "Heap Analysis",
+      "Bypass Harness",
+    ],
   },
   {
     id: "bugatlas",
@@ -26,6 +34,13 @@ export const PRODUCTS: SecurityProduct[] = [
       "A structured checklist for practical vulnerability discovery, attack patterns and meaningful security issues.",
     category: "Tool",
     badge: "Vulnerability Discovery",
+    spec: "Attack Taxonomy",
+    features: [
+      "OWASP Top 10 Mapping",
+      "Business Logic Flaws",
+      "Auth & Token Bypass",
+      "Race Conditions",
+    ],
   },
   {
     id: "versage",
@@ -35,6 +50,13 @@ export const PRODUCTS: SecurityProduct[] = [
       "A reverse-engineering guide focused on program behaviour, binary logic, vulnerabilities and execution flows.",
     category: "Tool",
     badge: "Reverse Engineering",
+    spec: "Binary Intelligence",
+    features: [
+      "Binary Disassembly",
+      "Control Flow Graphs",
+      "ELF & PE Analysis",
+      "Execution Logic",
+    ],
   },
   {
     id: "machinex",
@@ -44,6 +66,13 @@ export const PRODUCTS: SecurityProduct[] = [
       "A roadmap for high-performance security tooling, including network I/O, modular code, reliability and efficiency.",
     category: "Tool",
     badge: "High-Performance Tooling",
+    spec: "Systems Engine",
+    features: [
+      "Async Sockets & epoll",
+      "Zero-Copy Memory",
+      "Modular C++ & Rust",
+      "Sub-ms Latency I/O",
+    ],
   },
   {
     id: "kernelis",
@@ -53,6 +82,13 @@ export const PRODUCTS: SecurityProduct[] = [
       "Covers OS internals, kernel concepts, memory management, scheduling, interrupts, system calls and Ring 0 concepts.",
     category: "Tool",
     badge: "OS & Ring 0 Internals",
+    spec: "Low-Level Kernel",
+    features: [
+      "Ring 0 Kernel Space",
+      "Syscall Interception",
+      "Memory Pages & IDT",
+      "Device Driver Internals",
+    ],
   },
   {
     id: "infectis",
@@ -62,6 +98,13 @@ export const PRODUCTS: SecurityProduct[] = [
       "Covers malware-development concepts as controlled engineering systems, including execution, persistence, evasion, lateral movement, C2 and kernel techniques.",
     category: "Tool",
     badge: "Offensive Research",
+    spec: "Adversary Systems",
+    features: [
+      "Process Injection",
+      "EDR Evasion Vectors",
+      "C2 Infrastructure",
+      "Lateral Movement",
+    ],
   },
   {
     id: "darkx",
@@ -71,6 +114,13 @@ export const PRODUCTS: SecurityProduct[] = [
       "Dark-web OSINT for identifying and analysing leaked information such as emails, usernames, domains and credentials, with correlation for threat analysis and breach investigation.",
     category: "Tool",
     badge: "Dark Web OSINT",
+    spec: "Autonomous Radar",
+    features: [
+      "Tor .onion Scraping",
+      "Credential Leak Radar",
+      "Identity Correlation",
+      "Breach Threat Intel",
+    ],
   },
   {
     id: "owasp-2026-lab",
@@ -80,6 +130,7 @@ export const PRODUCTS: SecurityProduct[] = [
       "An isolated simulated environment with a mock AI backend, tool dispatcher, memory layer and flag store. Learners work through ten vulnerable scenarios aligned to ASI-01 through ASI-10.",
     category: "Lab",
     badge: "Agentic AI Security",
+    spec: "Flagship Lab",
     features: [
       "Web-Based Security Lab",
       "Linux Cloud Environment",
